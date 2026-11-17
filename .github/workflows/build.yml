@@ -12,13 +12,21 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.14"
+
+      - name: Install Flet CLI
+        run: pip install flet==0.24.1
+
       - name: Build Flet APK
         uses: flet-dev/flet-build-action@v1
         with:
           target: apk
           working-directory: mobile
-          runner-python-version: "3.11"
-          bundled-python-version: "3.11"
+          runner-python-version: "3.14"
+          bundled-python-version: "3.14"
           build-number: ${{ github.run_number }}
 
       - name: Upload APK
