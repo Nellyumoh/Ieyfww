@@ -1,0 +1,15 @@
+[project]
+name = "ieyfww"
+version = "0.1.0"
+description = "Ikot Ese Youth Foundation Worldwide App"
+requires-python = ">=3.9"
+dependencies = [
+    "flet==0.24.1",
+    "httpx",
+]
+
+[tool.flet]
+org = "ng.ieyfww"
+product = "IEYFWW"
+company = "IEYFWW"
+copyright = "Copyright (C) 2026 IEYFWW"

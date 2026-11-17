@@ -16,6 +16,7 @@ jobs:
         uses: flet-dev/flet-build-action@v1
         with:
           target: apk
+          working-directory: mobile
           runner-python-version: "3.11"
           bundled-python-version: "3.11"
           build-number: ${{ github.run_number }}
@@ -24,4 +25,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ieyfww-apk
-          path: build/apk/*.apk
+          path: mobile/build/apk/*.apk
