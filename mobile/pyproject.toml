@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "Ikot Ese Youth Foundation Worldwide App"
 requires-python = ">=3.9"
 dependencies = [
-    "flet==0.24.1",
+    "flet",
     "httpx",
 ]
 
