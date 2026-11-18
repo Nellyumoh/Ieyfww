@@ -5,9 +5,6 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
-env:
-  FLET_CLI_NO_RICH_OUTPUT: 1
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -15,20 +12,36 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Build APK with Flet
-        id: build
-        uses: flet-dev/flet-build-action@v1
+      - name: Setup Java
+        uses: actions/setup-java@v4
         with:
-          target: apk
-          working-directory: mobile
-          runner-python-version: "3.14"
-          bundled-python-version: "3.14"
-          build-number: ${{ github.run_number }}
+          distribution: 'zulu'
+          java-version: '17'
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Flet
+        run: pip install flet
+
+      - name: Build APK
+        env:
+          FLET_CLI_NO_RICH_OUTPUT: 1
+          PYTHONUTF8: 1
+        run: |
+          cd mobile
+          flet build apk --project "IEYFWW" --org "ng.ieyfww" --product "IEYFWW"
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: ieyfww-apk
-          path: ${{ steps.build.outputs.archive-path }}
-          archive: false
+          path: mobile/build/apk/*.apk
           if-no-files-found: error
