@@ -37,7 +37,7 @@ jobs:
           PYTHONUTF8: 1
         run: |
           cd mobile
-          flet build apk --project "IEYFWW" --org "ng.ieyfww" --product "IEYFWW"
+          flet build apk --project "IEYFWW" --org "ng.ieyfww" --product "IEYFWW" --yes
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
