@@ -13,3 +13,6 @@ org = "ng.ieyfww"
 product = "IEYFWW"
 company = "IEYFWW"
 copyright = "Copyright (C) 2026 IEYFWW"
+
+[tool.flet.android]
+target_arch = ["arm64-v8a"]
