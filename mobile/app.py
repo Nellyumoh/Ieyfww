@@ -76,7 +76,7 @@ def main(page: ft.Page):
             status_text.color = "red"
         page.update()
 
-    send_btn = ft.ElevatedButton(
+    send_btn = ft.Button(
         text="Send OTP", 
         on_click=send_otp_click, 
         bgcolor="#FFC107", 
@@ -84,7 +84,7 @@ def main(page: ft.Page):
         width=200
     )
     
-    verify_btn = ft.ElevatedButton(
+    verify_btn = ft.Button(
         text="Verify OTP", 
         on_click=verify_otp_click, 
         bgcolor="#FFC107", 
